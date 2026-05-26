@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página no encontrada — Costurama</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .not-found {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      gap: 1.5rem;
+    }
+
+    .not-found__logo {
+      height: 48px;
+      width: auto;
+      opacity: 0.8;
+      margin-bottom: 1rem;
+    }
+
+    .not-found__code {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(5rem, 15vw, 9rem);
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      opacity: 0.4;
+    }
+
+    .not-found__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 300;
+      color: var(--white);
+    }
+
+    .not-found__desc {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 320px;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="not-found">
+    <img class="not-found__logo" src="img/COSTURAMA.png" alt="Costurama" />
+    <div class="not-found__code">404</div>
+    <h1 class="not-found__title">Página no encontrada</h1>
+    <p class="not-found__desc">El hilo se cortó por aquí. La página que buscás no existe o fue movida.</p>
+    <a href="/" class="btn btn--primary" style="margin-top:0.5rem">← Volver al inicio</a>
+  </div>
+</body>
+</html>
