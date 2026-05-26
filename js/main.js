@@ -149,7 +149,6 @@ const CATALOGO = {
     fotos: [
       'img/catalogo/uniformes/escolares/u1.webp',
       'img/catalogo/uniformes/escolares/u11.webp',
-      'img/catalogo/uniformes/escolares/u111.webp',
       'img/catalogo/uniformes/escolares/u1111.webp',
     ]
   },
