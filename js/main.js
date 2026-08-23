@@ -75,44 +75,6 @@ const ICONS = {
   </svg>`
 };
 
-/* ── GALLERY DATA ────────────────────────────────────────────── */
-// Agregá tus fotos reales en img/ y actualizá este array
-const GALLERY = [
-  { src: 'img/trabajo1.jpg', alt: 'Uniformes confeccionados' },
-  { src: 'img/trabajo2.jpg', alt: 'Ropa médica' },
-  { src: 'img/trabajo3.jpg', alt: 'Reparación de prendas' },
-  { src: 'img/trabajo4.jpg', alt: 'Máquinas de coser' }
-];
-
-/* ── SERVICE DATA ───────────────────────────────────────────── */
-const SERVICES = [
-  {
-    icon: 'uniform',
-    name: 'Uniformes',
-    desc: 'Confección de uniformes empresariales y escolares a medida, con acabados profesionales y materiales duraderos.'
-  },
-  {
-    icon: 'medical',
-    name: 'Ropa médica y hospitalaria',
-    desc: 'Gabacha, pijamas quirúrgicos y ropa de equipo médico. También confeccionamos sábanas de camilla, cobertores de equipos y todo el textil que el entorno clínico necesita.'
-  },
-  {
-    icon: 'scissors',
-    name: 'Reparación de ropa',
-    desc: 'Arreglos, costuras, cambio de cierres, dobladillos y todo tipo de reparaciones con precisión y rapidez.'
-  },
-  {
-    icon: 'shop',
-    name: 'Venta de máquinas',
-    desc: 'Máquinas de coser nuevas y de segunda mano. Asesoría personalizada para elegir la que mejor se adapta a tus necesidades.'
-  },
-  {
-    icon: 'sewingMachine',
-    name: 'Reparación y mantenimiento',
-    desc: 'Servicio técnico especializado para todo tipo de máquinas de coser. Diagnóstico, mantenimiento preventivo y repuestos.'
-  }
-];
-
 /* ── WHY US DATA ────────────────────────────────────────────── */
 const WHY_ITEMS = [
   { icon: 'award',   label: 'Años de experiencia',  desc: 'Trayectoria sólida en confección y sastrería en Honduras.' },
@@ -122,6 +84,33 @@ const WHY_ITEMS = [
 ];
 
 const WA_LINK = 'https://wa.me/50492898429';
+
+// Genera un link de WhatsApp con mensaje prellenado
+function waLink(text) {
+  return `${WA_LINK}?text=${encodeURIComponent(text)}`;
+}
+
+/* ── SERVICE CARDS (teaser en el index, cada una manda a su página) ── */
+const SERVICE_CARDS = [
+  {
+    icon: 'uniform',
+    name: 'Hecho aquí',
+    desc: 'Uniformes escolares, empresariales y ropa médica, confeccionados a medida en nuestro taller.',
+    href: 'hecho-aqui.html'
+  },
+  {
+    icon: 'scissors',
+    name: 'Reparación de Ropa',
+    desc: 'Arreglos, cambio de cierres, dobladillos y ajustes de talla, con precisión y rapidez.',
+    href: 'reparacion.html'
+  },
+  {
+    icon: 'sewingMachine',
+    name: 'Máquinas',
+    desc: 'Venta de máquinas de coser nuevas y usadas, además de reparación y mantenimiento técnico.',
+    href: 'maquinas.html'
+  }
+];
 
 /* ── ABOUT DATA ─────────────────────────────────────────────── */
 const ABOUT = {
@@ -194,16 +183,125 @@ const CATALOGO = {
   }
 };
 
+/* ── PAGE CONTENT (hecho-aqui / reparacion / maquinas) ───────── */
+const PAGES = {
+  'hecho-aqui': {
+    metaTitle: 'Uniformes y Ropa Médica — Costurama',
+    tag: 'Confección a medida',
+    title: 'Hecho aquí,<br>hilo por <em>hilo.</em>',
+    desc: 'Uniformes escolares, empresariales y ropa médica confeccionados en nuestro taller en Siguatepeque, con más de 35 años de experiencia.',
+    queEsTitle: '¿Qué hacemos?',
+    queEsText: 'Confeccionamos uniformes escolares y empresariales, además de ropa médica y hospitalaria — gabachas, pijamas quirúrgicos, sábanas de camilla y cobertores de equipo. Todo hecho a medida, con materiales duraderos y acabados profesionales.',
+    pasos: [
+      { title: 'Contanos qué necesitás', desc: 'Tipo de prenda, cantidad, y si ya tenés un diseño o logo definido.' },
+      { title: 'Tomamos medidas', desc: 'Para colegios o empresas, coordinamos la toma de medidas del grupo.' },
+      { title: 'Confeccionamos', desc: 'Cada prenda se corta y cose en nuestro taller, con revisión de calidad.' },
+      { title: 'Entregamos a tiempo', desc: 'Respetamos el plazo acordado desde el inicio.' }
+    ],
+    catalogKeys: [
+      { key: 'uniform-escolar', label: 'Escolares' },
+      { key: 'uniform-empresarial', label: 'Empresariales' },
+      { key: 'medical', label: 'Médicos' }
+    ],
+    faq: [
+      { q: '¿Hacen pedidos por cantidad, para colegios o empresas?', a: 'Sí, es nuestra especialidad — manejamos pedidos grandes con tallas variadas.' },
+      { q: '¿Puedo llevar mi propia tela?', a: 'Sí, podés traer tu tela o te asesoramos para elegir la mejor opción.' },
+      { q: '¿Confeccionan ropa médica para clínicas u hospitales?', a: 'Sí — gabachas, pijamas quirúrgicos, sábanas de camilla y cobertores de equipo.' }
+    ],
+    waText: 'Hola, quisiera información sobre uniformes y ropa médica',
+    badge: { label: 'Experiencia', value: '+35 años', sub: 'Sastrería en Siguatepeque' },
+    heroImage: 'img/hero/hecho-aqui.jpg'
+  },
+  reparacion: {
+    metaTitle: 'Reparación de Ropa — Costurama',
+    tag: 'Segunda vida para tus prendas',
+    title: 'Reparación de<br><em>ropa.</em>',
+    desc: 'Le damos segunda vida a tus prendas — desde cierres rotos hasta ajustes de talla, con la misma atención al detalle que ponemos en una prenda nueva.',
+    queEsTitle: '¿Qué reparamos?',
+    queEsText: 'Cambio de cierres, dobladillos, ajustes de talla, remiendos, botones y ojales, forros internos, y reparaciones en cuero o mezclilla. Si se puede coser, probablemente lo podemos arreglar.',
+    pasos: [
+      { title: 'Traé tu prenda', desc: 'Al taller, o coordinamos los detalles por WhatsApp.' },
+      { title: 'Evaluamos el daño', desc: 'Te decimos qué se puede hacer y cómo.' },
+      { title: 'Te damos tiempo y costo', desc: 'Sin sorpresas, antes de empezar el trabajo.' },
+      { title: 'Recogés tu prenda lista', desc: 'Revisada y con la calidad de siempre.' }
+    ],
+    catalogKeys: [{ key: 'scissors', label: 'Reparación de Ropa' }],
+    faq: [
+      { q: '¿Cuánto tarda una reparación?', a: 'Depende del trabajo — arreglos simples suelen hacerse el mismo día; escríbenos para un estimado.' },
+      { q: '¿Reparan cuero o solo tela?', a: 'Reparamos ambos.' }
+    ],
+    waText: 'Hola, quisiera información sobre reparación de ropa',
+    badge: { label: 'Atención', value: 'Rápida', sub: 'Arreglos simples el mismo día' },
+    heroImage: 'img/hero/reparacion.jpg'
+  },
+  maquinas: {
+    metaTitle: 'Máquinas de Coser — Venta y Reparación — Costurama',
+    tag: 'Venta y servicio técnico',
+    title: 'Máquinas de<br><em>coser.</em>',
+    desc: 'Vendemos máquinas de coser nuevas y usadas, y les damos mantenimiento y reparación con más de 35 años de experiencia técnica.',
+    queEsTitle: '¿Qué ofrecemos?',
+    queEsText: 'Venta de máquinas de coser nuevas y de segunda mano, con asesoría personalizada para elegir la que mejor se adapta a tu necesidad. También ofrecemos diagnóstico, mantenimiento preventivo, reparación y repuestos para todo tipo de máquinas.',
+    pasos: [
+      { title: 'Contanos qué necesitás', desc: '¿Comprar una máquina o reparar la que ya tenés?' },
+      { title: 'Asesoría o diagnóstico', desc: 'Te ayudamos a elegir, o revisamos la falla sin compromiso.' },
+      { title: 'Cotización clara', desc: 'Precio y tiempo estimado antes de proceder.' },
+      { title: 'Entrega', desc: 'Tu máquina lista para coser, nueva o reparada.' }
+    ],
+    catalogKeys: [{ key: 'shop', label: 'Máquinas de Coser' }],
+    faq: [
+      { q: '¿Tienen repuestos disponibles?', a: 'Sí, manejamos repuestos para las marcas más comunes.' },
+      { q: '¿Compran máquinas usadas?', a: 'Escríbenos por WhatsApp con detalles de tu máquina y te decimos.' }
+    ],
+    waText: 'Hola, quisiera información sobre máquinas de coser',
+    badge: { label: 'Servicio técnico', value: 'Venta y reparación', sub: 'Todas las marcas' },
+    heroImage: 'img/hero/maquinas.jpg'
+  }
+};
+
 /* ── RENDER HELPERS ─────────────────────────────────────────── */
+const NAV_LINKS = [
+  { label: 'Hecho aquí',          href: 'hecho-aqui.html', match: 'hecho-aqui' },
+  { label: 'Reparación de Ropa',  href: 'reparacion.html', match: 'reparacion' },
+  { label: 'Máquinas',            href: 'maquinas.html',   match: 'maquinas' },
+  { label: 'Nosotros',            href: 'nosotros.html',   match: 'nosotros' }
+];
+
 function renderNav() {
+  const currentPage = document.body.dataset.page || 'index';
+
+  const linksHtml = NAV_LINKS.map(l => `
+    <a href="${l.href}" class="nav__link ${l.match === currentPage ? 'nav__link--active' : ''}">${l.label}</a>
+  `).join('');
+
   document.getElementById('nav').innerHTML = `
-    <a href="#" class="nav__brand">
+    <a href="index.html" class="nav__brand">
       <img class="nav__needle-icon" src="img/aguja_nav.png" alt="Costurama" />
       <span class="nav__wordmark">COSTURAMA</span>
     </a>
-    <a href="${WA_LINK}" target="_blank" rel="noopener" class="btn btn--primary">
-      ${ICONS.whatsapp} WhatsApp
-    </a>`;
+    <div class="nav__links" id="nav-links">${linksHtml}</div>
+    <div class="nav__actions">
+      <a href="${WA_LINK}" target="_blank" rel="noopener" class="btn btn--primary nav__whatsapp">
+        ${ICONS.whatsapp} WhatsApp
+      </a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>`;
+
+  const toggle = document.getElementById('nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  toggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('nav__links--open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('nav__links--open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
 }
 
 function renderHero() {
@@ -233,6 +331,42 @@ function renderHero() {
         <p>Atención personalizada</p>
         <strong>Lun – Sáb</strong>
         <span class="hero__badge-hours">8:00 a.m. – 6:00 p.m.</span>
+      </div>
+    </div>`;
+}
+
+function renderServicesTeaser() {
+  const cards = SERVICE_CARDS.map(s => `
+    <a href="${s.href}" class="service-card service-card--clickable">
+      <div class="service-card__icon">${ICONS[s.icon]}</div>
+      <h3 class="service-card__name">${s.name}</h3>
+      <p class="service-card__desc">${s.desc}</p>
+      <span class="service-card__cta">Ver más →</span>
+    </a>`).join('');
+
+  document.getElementById('servicios').innerHTML = `
+    <span class="section-label">Lo que hacemos</span>
+    <h2 class="section-title">Nuestros <em>servicios</em></h2>
+    <div class="services__grid">${cards}</div>`;
+}
+
+function renderNosotrosHero() {
+  document.getElementById('page-hero').innerHTML = `
+    <div class="nosotros-hero__bg">
+      <img src="img/hero/nosotros.jpg" alt="Costurama — taller de costura"
+           onerror="this.onerror=null; this.src='img/hero.jpg';" />
+    </div>
+    <div class="nosotros-hero__content">
+      <span class="hero__tag">Quiénes somos</span>
+      <h1 class="hero__title">¿Qué es <em>Costurama?</em></h1>
+      <p class="hero__desc">
+        Confección, reparación textil y máquinas de coser, con la experiencia de Don Javier Argueta
+        detrás de cada prenda.
+      </p>
+      <div class="hero__actions">
+        <a href="${WA_LINK}" target="_blank" rel="noopener" class="btn btn--primary">
+          ${ICONS.whatsapp} Escribinos ahora
+        </a>
       </div>
     </div>`;
 }
@@ -281,30 +415,6 @@ function renderAbout() {
     </div>`;
 }
 
-function renderServices() {
-  const cards = SERVICES.map(s => {
-    const hasCatalog = CATALOGO.hasOwnProperty(s.icon);
-    return `
-    <article class="service-card ${hasCatalog ? 'service-card--clickable' : ''}"
-             data-catalog="${s.icon}">
-      <div class="service-card__icon">${ICONS[s.icon]}</div>
-      <h3 class="service-card__name">${s.name}</h3>
-      <p class="service-card__desc">${s.desc}</p>
-      ${hasCatalog ? `<span class="service-card__cta">Ver catálogo →</span>` : ''}
-    </article>`;
-  }).join('');
-
-  document.getElementById('servicios').innerHTML = `
-    <div class="services__grid">${cards}</div>`;
-
-  // Event listeners en lugar de onclick inline
-  document.querySelectorAll('.service-card--clickable').forEach(card => {
-    card.addEventListener('click', () => {
-      window.openModal(card.dataset.catalog);
-    });
-  });
-}
-
 function renderWhy() {
   const items = WHY_ITEMS.map(item => `
     <div class="why-item">
@@ -335,7 +445,7 @@ function renderCta() {
 function renderFooter() {
   document.getElementById('footer').innerHTML = `
     <img class="footer__logo" src="img/COSTURAMA.png" alt="Costurama" />
-    <p class="footer__copy">© 2025 Costurama · Elegancia y Estilo · Siguatepeque, Honduras</p>
+    <p class="footer__copy">© 2026 Costurama · Elegancia y Estilo · Siguatepeque, Honduras</p>
     <p class="footer__dev">
       Designed &amp; built by
       <a href="https://instagram.com/javi_argueta24" target="_blank" rel="noopener" class="footer__dev-link">
@@ -344,21 +454,145 @@ function renderFooter() {
     </p>`;
 }
 
-function renderGallery() {
-  const items = GALLERY.map(item => `
-    <div class="gallery-item">
-      <img src="${item.src}" alt="${item.alt}" loading="lazy" />
-      <div class="gallery-item__overlay">
-        <span>${item.alt}</span>
-      </div>
-    </div>`).join('');
+// Foto dedicada del hero de cada página (con respaldo a la genérica si aún no existe el archivo)
+function getPageHeroImage(p) {
+  return p.heroImage || 'img/hero.jpg';
+}
 
-  document.getElementById('gallery').innerHTML = `
-    <div class="gallery__inner">
-      <span class="section-label">Nuestro trabajo</span>
-      <h2 class="section-title">Cada prenda,<br>una <em>historia.</em></h2>
-      <div class="gallery__grid">${items}</div>
+/* ── SERVICE PAGE RENDER (hecho-aqui / reparacion / maquinas) ── */
+function renderServicePage(pageKey) {
+  const p = PAGES[pageKey];
+  if (!p) return;
+
+  document.getElementById('page-hero').innerHTML = `
+    <div class="hero__content">
+      <span class="hero__tag">${p.tag}</span>
+      <h1 class="hero__title">${p.title}</h1>
+      <p class="hero__desc">${p.desc}</p>
+      <div class="hero__actions">
+        <a href="${waLink(p.waText)}" target="_blank" rel="noopener" class="btn btn--primary">
+          ${ICONS.whatsapp} Consultar por WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <img class="hero__photo" src="${getPageHeroImage(p)}" alt="${p.metaTitle}"
+           onerror="this.onerror=null; this.src='img/hero.jpg';" />
+      <div class="hero__badge">
+        <p>${p.badge.label}</p>
+        <strong>${p.badge.value}</strong>
+        <span class="hero__badge-hours">${p.badge.sub}</span>
+      </div>
     </div>`;
+
+  document.getElementById('que-es').innerHTML = `
+    <div class="queEs__inner">
+      <span class="section-label">Sobre este servicio</span>
+      <h2 class="section-title">${p.queEsTitle}</h2>
+      <p class="queEs__text">${p.queEsText}</p>
+    </div>`;
+
+  document.getElementById('como-funciona').innerHTML = `
+    <div class="pasos__inner">
+      <span class="section-label">Cómo funciona</span>
+      <h2 class="section-title">El <em>proceso.</em></h2>
+      <div class="pasos__grid">
+        ${p.pasos.map((step, i) => `
+          <div class="paso-card">
+            <span class="paso-card__num">${i + 1}</span>
+            <h3 class="paso-card__title">${step.title}</h3>
+            <p class="paso-card__desc">${step.desc}</p>
+          </div>`).join('')}
+      </div>
+    </div>`;
+
+  const categories = p.catalogKeys
+    .map(c => ({ label: c.label, fotos: (CATALOGO[c.key] && CATALOGO[c.key].fotos) || [] }))
+    .filter(c => c.fotos.length > 0);
+
+  const showTitles = categories.length > 1;
+
+  const MAX_GRID = 8;
+
+  const catalogoHtml = categories.length ? categories.map((cat, catIdx) => {
+    const total = cat.fotos.length;
+    const hasMore = total > MAX_GRID;
+    const visible = cat.fotos.slice(0, MAX_GRID);
+
+    const itemsHtml = visible.map((src, i) => {
+      const isMoreTile = hasMore && i === MAX_GRID - 1;
+      if (isMoreTile) {
+        return `
+          <div class="modal-grid__item modal-grid__item--more" data-cat="${catIdx}">
+            <img src="${src}" alt="${cat.label} — ver más fotos" loading="lazy"
+                 onerror="this.closest('.modal-grid__item').style.display='none'" />
+            <div class="modal-grid__more-overlay">
+              <span class="modal-grid__more-label">Ver más</span>
+              <span class="modal-grid__more-count">+${total - (MAX_GRID - 1)}</span>
+            </div>
+          </div>`;
+      }
+      return `
+        <div class="modal-grid__item" data-index="${i}">
+          <img src="${src}" alt="${cat.label} ${i + 1}" loading="lazy"
+               onerror="this.closest('.modal-grid__item').style.display='none'" />
+        </div>`;
+    }).join('');
+
+    return `
+      <div class="catalogo__category">
+        ${showTitles ? `<h3 class="catalogo__category-title">${cat.label}</h3>` : ''}
+        <div class="catalogo__grid" data-cat="${catIdx}">${itemsHtml}</div>
+      </div>`;
+  }).join('') : `<p class="catalogo__empty">Muy pronto vas a poder ver fotos reales de este servicio aquí.</p>`;
+
+  document.getElementById('catalogo-section').innerHTML = `
+    <div class="catalogo__inner">
+      <span class="section-label">Nuestro trabajo</span>
+      <h2 class="section-title">Fotos <em>reales.</em></h2>
+      ${catalogoHtml}
+    </div>`;
+
+  document.querySelectorAll('#catalogo-section .catalogo__grid').forEach(grid => {
+    const catIdx = parseInt(grid.dataset.cat);
+    const { fotos, label } = categories[catIdx];
+
+    grid.querySelectorAll('.modal-grid__item:not(.modal-grid__item--more)').forEach(item => {
+      item.addEventListener('click', () => {
+        const idx = parseInt(item.dataset.index);
+        window.openLightbox(fotos, idx, label);
+      });
+    });
+
+    const moreTile = grid.querySelector('.modal-grid__item--more');
+    if (moreTile) {
+      moreTile.addEventListener('click', () => {
+        window.openCatalogStrip(fotos, label);
+      });
+    }
+  });
+
+  document.getElementById('faq-section').innerHTML = `
+    <div class="faq__inner">
+      <span class="section-label">Preguntas frecuentes</span>
+      <h2 class="section-title">¿Tenés <em>dudas?</em></h2>
+      <div class="faq__list">
+        ${p.faq.map(item => `
+          <details class="faq-item">
+            <summary class="faq-item__q">${item.q}</summary>
+            <p class="faq-item__a">${item.a}</p>
+          </details>`).join('')}
+      </div>
+    </div>`;
+
+  document.getElementById('page-cta').innerHTML = `
+    <span class="section-label">Contacto</span>
+    <h2 class="section-title">¿Listo para <em>empezar?</em></h2>
+    <p class="cta__desc">Escribinos por WhatsApp y te respondemos enseguida.</p>
+    <a href="${waLink(p.waText)}" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
+      ${ICONS.whatsapp} Escribir por WhatsApp
+    </a>
+    <span class="cta__note">+504 9289 8429 · Siguatepeque, Honduras</span>`;
 }
 
 /* ── MODAL ──────────────────────────────────────────────────── */
@@ -425,7 +659,7 @@ window.openModal = function(categoria) {
       </div>
       <div class="modal__grid" id="modal-grid">${items}</div>
       <div class="modal__footer">
-        <a href="${WA_LINK}" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
+        <a href="${waLink('Hola, quisiera información sobre ' + data.titulo)}" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
           ${ICONS.whatsapp} Consultar por WhatsApp
         </a>
       </div>
@@ -524,6 +758,35 @@ window.openLightbox = function(fotos, startIndex, titulo) {
   render();
 }
 
+// Visor de scroll horizontal — se abre al hacer clic en "Ver más" cuando hay más de 9 fotos
+window.openCatalogStrip = function(fotos, titulo) {
+  const lb = document.getElementById('lightbox');
+  lb.innerHTML = `
+    <div class="lb__backdrop" id="lb-backdrop"></div>
+    <div class="strip__box">
+      <button class="lb__close" id="lb-close" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="strip__header">
+        <h3 class="strip__title">${titulo}</h3>
+        <span class="strip__hint">Desliza para ver todas (${fotos.length})</span>
+      </div>
+      <div class="strip__scroll" id="strip-scroll">
+        ${fotos.map((src, i) => `
+          <div class="strip__item">
+            <img class="strip__img" src="${src}" alt="${titulo} ${i + 1}" loading="lazy" />
+          </div>`).join('')}
+      </div>
+    </div>`;
+
+  lb.classList.add('lb--open');
+
+  document.getElementById('lb-backdrop').addEventListener('click', window.closeLightbox);
+  document.getElementById('lb-close').addEventListener('click', window.closeLightbox);
+}
+
 window.closeLightbox = function() {
   const lb = document.getElementById('lightbox');
   lb.classList.remove('lb--open');
@@ -542,10 +805,20 @@ document.addEventListener('keydown', e => {
 /* ── INIT ───────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   renderNav();
-  renderHero();
-  renderAbout();
-  renderServices();
-  renderWhy();
-  renderCta();
   renderFooter();
+
+  const page = document.body.dataset.page || 'index';
+
+  if (page === 'index') {
+    renderHero();
+    renderServicesTeaser();
+    renderWhy();
+    renderCta();
+  } else if (page === 'nosotros') {
+    renderNosotrosHero();
+    renderAbout();
+    renderCta();
+  } else if (PAGES[page]) {
+    renderServicePage(page);
+  }
 });
