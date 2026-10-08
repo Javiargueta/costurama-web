@@ -274,20 +274,36 @@ function renderNav() {
   `).join('');
 
   document.getElementById('nav').innerHTML = `
-    <a href="index.html" class="nav__brand">
-      <img class="nav__needle-icon" src="img/aguja_nav.png" alt="Costurama" />
-      <span class="nav__wordmark">COSTURAMA</span>
-    </a>
-    <div class="nav__links" id="nav-links">${linksHtml}</div>
-    <div class="nav__actions">
-      <a href="${WA_LINK}" target="_blank" rel="noopener" class="btn btn--primary nav__whatsapp">
-        ${ICONS.whatsapp} WhatsApp
+    <div class="announcement-bar">
+      <div class="announcement-bar__inner">
+        <span class="announcement-bar__badge">
+          <span class="announcement-bar__dot"></span>
+          Sitio en actualización
+        </span>
+        <span class="announcement-bar__msg">
+          Estamos trabajando en nuevas actualizaciones y mejoras en nuestra web. Seguimos atendiéndote con normalidad por WhatsApp.
+        </span>
+        <a href="${waLink('Hola, quisiera hacer una consulta durante la actualización del sitio')}" target="_blank" rel="noopener" class="announcement-bar__cta">
+          Contactar por WhatsApp &rarr;
+        </a>
+      </div>
+    </div>
+    <div class="nav__inner">
+      <a href="index.html" class="nav__brand">
+        <img class="nav__needle-icon" src="img/aguja_nav.png" alt="Costurama" />
+        <span class="nav__wordmark">COSTURAMA</span>
       </a>
-      <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
-      </button>
+      <div class="nav__links" id="nav-links">${linksHtml}</div>
+      <div class="nav__actions">
+        <a href="${WA_LINK}" target="_blank" rel="noopener" class="btn btn--primary nav__whatsapp">
+          ${ICONS.whatsapp} WhatsApp
+        </a>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
     </div>`;
 
   const toggle = document.getElementById('nav-toggle');
@@ -307,6 +323,15 @@ function renderNav() {
 function renderHero() {
   document.getElementById('hero').innerHTML = `
     <div class="hero__content">
+      <div class="hero__announcement">
+        <span class="hero__announcement-tag">
+          <span class="hero__announcement-dot"></span>
+          Sitio en actualización
+        </span>
+        <span class="hero__announcement-text">
+          Estamos renovando nuestra página. Todos nuestros servicios siguen disponibles.
+        </span>
+      </div>
       <span class="hero__tag">Siguatepeque, Honduras</span>
       <div class="hero__logo-display">
         <span class="hero__wordmark">COSTURAMA</span>
