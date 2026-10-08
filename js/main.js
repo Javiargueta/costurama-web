@@ -284,19 +284,19 @@ function renderNav() {
           Estamos trabajando en nuevas actualizaciones y mejoras en nuestra web. Seguimos atendiéndote con normalidad por WhatsApp.
         </span>
         <a href="${waLink('Hola, quisiera hacer una consulta durante la actualización del sitio')}" target="_blank" rel="noopener" class="announcement-bar__cta">
-          Contactar por WhatsApp &rarr;
+          <span class="announcement-bar__cta-long">Contactar por WhatsApp</span><span class="announcement-bar__cta-short">WhatsApp</span> &rarr;
         </a>
       </div>
     </div>
     <div class="nav__inner">
       <a href="index.html" class="nav__brand">
-        <img class="nav__needle-icon" src="img/aguja_nav.png" alt="Costurama" />
+        <img class="nav__needle-icon" src="img/aguja icon.png" alt="Costurama" />
         <span class="nav__wordmark">COSTURAMA</span>
       </a>
       <div class="nav__links" id="nav-links">${linksHtml}</div>
       <div class="nav__actions">
-        <a href="${WA_LINK}" target="_blank" rel="noopener" class="btn btn--primary nav__whatsapp">
-          ${ICONS.whatsapp} WhatsApp
+        <a href="${WA_LINK}" target="_blank" rel="noopener" class="btn btn--primary nav__whatsapp" aria-label="WhatsApp">
+          ${ICONS.whatsapp} <span class="nav__whatsapp-label">WhatsApp</span>
         </a>
         <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
@@ -827,9 +827,26 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape')     window.closeLightbox();
 });
 
+/* ── NAV HEIGHT SYNC ────────────────────────────────────────── */
+// El header es fijo y su altura cambia según el ancho del dispositivo
+// (el cintillo puede ocupar 1 o 2 líneas). Exponemos la altura real
+// como --nav-h para que el contenido nunca quede tapado.
+function syncNavHeight() {
+  const nav = document.getElementById('nav');
+  if (!nav) return;
+  const apply = () => document.documentElement.style.setProperty('--nav-h', `${nav.offsetHeight}px`);
+  apply();
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(apply).observe(nav);
+  } else {
+    window.addEventListener('resize', apply);
+  }
+}
+
 /* ── INIT ───────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   renderNav();
+  syncNavHeight();
   renderFooter();
 
   const page = document.body.dataset.page || 'index';

@@ -102,4 +102,4 @@ const catalogo = generarCatalogo();
 actualizarMainJs(catalogo);
 
 console.log('\n✅ main.js actualizado correctamente.');
-console.log('   Ya podés subir la carpeta a Netlify.\n');
+console.log('   Listo para publicar.\n');
